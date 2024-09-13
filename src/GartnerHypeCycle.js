@@ -153,9 +153,9 @@ const GartnerHypeCycle = () => {
     backgroundSize: '100% auto', // This will make the image width 100% of the container
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: windowWidth < 768 ? '40vh' : windowWidth < 1024 ? '50vh' : '60vh', // Increased height
+    height: windowWidth < 768 ? '40vh' : windowWidth < 1024 ? '60vh' : '70vh', // Increased height
     marginTop: '0',
-    maxWidth: '1200px', // Set a maximum width
+    maxWidth: '1100px', // Set a maximum width
     margin: '0 auto', // Center the div if it's less than 100% width
   }}
         />
