@@ -98,8 +98,7 @@ const GartnerHypeCycle = () => {
     };
   
     return (
-      <div ref={containerRef} className="relative w-full bg-gray-100 p-4 mx-auto max-w-[90vw]">
-        <h2 className="text-2xl font-bold mb-4 text-center">Interactive Gartner Hype Cycle</h2>
+      <div ref={containerRef} className="relative w-full bg-white-100 p-4 mx-auto max-w-[90vw]">
         
         {/* Staging area */}
         <div 
@@ -140,7 +139,7 @@ const GartnerHypeCycle = () => {
               marginBottom: windowWidth < 768 ? '1vh' : '2vh', // Adjust margin for smaller screens
             }}
           >
-            Take Screenshot
+            Take screenshot
           </button>
         </div>
   
