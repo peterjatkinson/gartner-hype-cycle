@@ -146,15 +146,18 @@ const GartnerHypeCycle = () => {
   
         {/* Gartner Hype Cycle image */}
         <div 
-          ref={graphRef}
-          className="w-full bg-cover bg-center"
-          style={{
-            backgroundImage: `url('${process.env.PUBLIC_URL}/images/gartner-hype-cycle.png')`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            height: windowWidth < 768 ? '30vh' : windowWidth < 1024 ? '40vh' : '50vh', // Responsive height
-            marginTop: '0', // Eliminate extra space above the graph
-          }}
+  ref={graphRef}
+  className="w-full bg-cover bg-center"
+  style={{
+    backgroundImage: `url('${process.env.PUBLIC_URL}/images/gartner-hype-cycle.png')`,
+    backgroundSize: '100% auto', // This will make the image width 100% of the container
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    height: windowWidth < 768 ? '40vh' : windowWidth < 1024 ? '50vh' : '60vh', // Increased height
+    marginTop: '0',
+    maxWidth: '1200px', // Set a maximum width
+    margin: '0 auto', // Center the div if it's less than 100% width
+  }}
         />
       </div>
     );
