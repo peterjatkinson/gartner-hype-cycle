@@ -15,15 +15,14 @@ const GartnerHypeCycle = () => {
     const [labels, setLabels] = useState(
       technologies.map((tech, index) => ({
         text: tech,
-        x: 0, // Initial x position
-        y: 0, // Initial y position
-        isOnImage: false, // Tracks if element is placed on the graph image
-        hasBeenDragged: false, // Tracks if element has been dragged
+        x: 0,
+        y: 0,
+        isOnImage: false,
+        hasBeenDragged: false,
       }))
     );
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
-    // Function to update window width state on resize
     useEffect(() => {
       const handleResize = () => setWindowWidth(window.innerWidth);
       window.addEventListener('resize', handleResize);
@@ -49,7 +48,7 @@ const GartnerHypeCycle = () => {
         x: data.x,
         y: data.y,
         isOnImage: isOnImage,
-        hasBeenDragged: true, // Stop resizing relatively once dragged
+        hasBeenDragged: true,
       };
   
       setLabels(newLabels);
@@ -64,7 +63,7 @@ const GartnerHypeCycle = () => {
         y: graphRect.top,
         width: graphRect.width,
         height: graphRect.height,
-        scale: window.devicePixelRatio // For better quality on high DPI screens
+        scale: window.devicePixelRatio
       }).then(canvas => {
         const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         const link = document.createElement('a');
@@ -74,42 +73,47 @@ const GartnerHypeCycle = () => {
       });
     };
   
-    // Define scaling styles based on breakpoints
     const getScalingStyles = () => {
-      if (windowWidth < 768) {
+      if (windowWidth < 400) {
+        return {
+          transform: 'scale(0.7)',
+          fontSize: '0.75rem',
+          height: '1.8rem',
+        };
+      } else if (windowWidth < 768) {
         return {
           transform: 'scale(0.8)',
           fontSize: '0.85rem',
-          height: '2rem', // Adjust height of boxes at small screen sizes
+          height: '2rem',
         };
       } else if (windowWidth < 1024) {
         return {
           transform: 'scale(0.9)',
           fontSize: '.9rem',
-          height: '2.5rem', // Adjust height of boxes at medium screen sizes
+          height: '2.5rem',
         };
       } else {
         return {
           transform: 'scale(1)',
           fontSize: '.9rem',
-          height: '2.5rem', // Adjust height of boxes at large screen sizes
+          height: '2.5rem',
         };
       }
     };
   
     return (
-      <div ref={containerRef} className="relative w-full bg-white-100 p-4 mx-auto max-w-[90vw]">
-        
-        {/* Staging area */}
+      <div ref={containerRef} className="relative w-full bg-white p-4 mx-auto" style={{ maxWidth: '100%' }}>
         <div 
-          className="relative w-full mb-4 border border-dashed border-gray-300 bg-gray-50 flex flex-wrap justify-start items-start p-4 gap-4"
+          className="relative w-full mb-6 border border-dashed border-gray-300 bg-gray-50 flex flex-wrap justify-start items-start p-4 gap-2"
           style={{ 
-            paddingTop: '3rem', // Space for the "Drag technologies..." text
-            height: windowWidth < 768 ? '25vh' : windowWidth < 1024 ? '20vh' : '15vh', // Responsive height
+            paddingTop: '2rem',
+            height: windowWidth < 400 ? '35vh' : windowWidth < 768 ? '30vh' : windowWidth < 1024 ? '25vh' : '20vh',
+            height: 'auto',
+maxHeight: windowWidth < 400 ? '30vh' : windowWidth < 768 ? '25vh' : '20vh',
+            minHeight: '150px',
           }}
         >
-          <p className="absolute top-2 left-2 text-sm text-gray-500">Drag technologies onto the graph below</p>
-          {/* Draggable elements */}
+          <p className="absolute top-1 left-2 text-xs text-gray-500">Drag technologies onto the graph below</p>
           {labels.map((label, index) => (
             <Draggable
               key={index}
@@ -117,11 +121,12 @@ const GartnerHypeCycle = () => {
               onDrag={(e, data) => handleDrag(index, e, data)}
             >
               <div
-                className={`relative cursor-move p-2 rounded shadow text-sm 
+                className={`relative cursor-move p-1 rounded shadow text-sm 
                             ${label.isOnImage ? 'bg-white bg-opacity-75' : 'bg-white'}`}
                 style={{
-                  ...getScalingStyles(), // Apply scaling based on breakpoints
-                  lineHeight: '1.2', // Adjust line height for better text visibility
+                  ...getScalingStyles(),
+                  lineHeight: '1.2',
+                  maxWidth: '45%',
                 }}
               >
                 {label.text}
@@ -130,33 +135,29 @@ const GartnerHypeCycle = () => {
           ))}
         </div>
   
-        {/* Screenshot button between staging area and graph */}
-        <div className="w-full flex justify-center mb-0">
+        <div className="w-full flex justify-center mb-4">
           <button 
             onClick={takeScreenshot}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            style={{
-              marginBottom: windowWidth < 768 ? '1vh' : '2vh', // Adjust margin for smaller screens
-            }}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm"
           >
             Take screenshot
           </button>
         </div>
   
-        {/* Gartner Hype Cycle image */}
         <div 
-  ref={graphRef}
-  className="w-full bg-cover bg-center"
-  style={{
-    backgroundImage: `url('${process.env.PUBLIC_URL}/images/gartner-hype-cycle.png')`,
-    backgroundSize: '100% auto', // This will make the image width 100% of the container
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    height: windowWidth < 768 ? '40vh' : windowWidth < 1024 ? '60vh' : '70vh', // Increased height
-    marginTop: '0',
-    maxWidth: '1100px', // Set a maximum width
-    margin: '0 auto', // Center the div if it's less than 100% width
-  }}
+          ref={graphRef}
+          className="w-full bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${process.env.PUBLIC_URL}/images/gartner-hype-cycle.png')`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            height: windowWidth < 400 ? '35vh' : windowWidth < 768 ? '40vh' : windowWidth < 1024 ? '50vh' : '60vh',
+            marginTop: '0',
+            maxWidth: windowWidth < 768 ? '100%' : '1100px',
+            width: '100%',
+            margin: '0 auto',
+          }}
         />
       </div>
     );
