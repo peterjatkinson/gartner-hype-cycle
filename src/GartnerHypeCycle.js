@@ -152,11 +152,11 @@ maxHeight: windowWidth < 400 ? '30vh' : windowWidth < 768 ? '25vh' : '20vh',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            height: windowWidth < 400 ? '35vh' : windowWidth < 768 ? '40vh' : windowWidth < 1024 ? '50vh' : '60vh',
-            marginTop: '0',
-            maxWidth: windowWidth < 768 ? '100%' : '1100px',
-            width: '100%',
-            margin: '0 auto',
+            width: '100%', // Full width
+            maxWidth: '100%', // Max width to ensure it doesn't go beyond container on mobile
+            aspectRatio: '16 / 9',  // Maintain the aspect ratio
+            margin: '0 auto',  // Center the image if needed
+            height: 'auto'  // Adjust height automatically based on aspect ratio
           }}
         />
       </div>
