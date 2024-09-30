@@ -109,7 +109,7 @@ const GartnerHypeCycle = () => {
             paddingTop: '2rem',
             height: windowWidth < 400 ? '35vh' : windowWidth < 768 ? '30vh' : windowWidth < 1024 ? '25vh' : '20vh',
             height: 'auto',
-maxHeight: windowWidth < 400 ? '30vh' : windowWidth < 768 ? '25vh' : '20vh',
+            maxHeight: windowWidth < 400 ? '30vh' : windowWidth < 768 ? '25vh' : '20vh',
             minHeight: '150px',
           }}
         >
@@ -152,11 +152,12 @@ maxHeight: windowWidth < 400 ? '30vh' : windowWidth < 768 ? '25vh' : '20vh',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            width: '100%', // Full width
-            maxWidth: '100%', // Max width to ensure it doesn't go beyond container on mobile
-            aspectRatio: '16 / 9',  // Maintain the aspect ratio
-            margin: '0 auto',  // Center the image if needed
-            height: 'auto'  // Adjust height automatically based on aspect ratio
+            width: '100%', // Ensure full width
+            paddingTop: '56.25%', // Aspect ratio to maintain the height dynamically (16:9 ratio)
+            height: 'auto', // Allow the height to adjust automatically
+            maxWidth: '100%',
+            margin: '0 auto', // Centering the graph
+            display: 'block', // Ensures the container behaves as a block element
           }}
         />
       </div>
