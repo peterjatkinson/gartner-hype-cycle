@@ -134,11 +134,11 @@ const GartnerHypeCycle = () => {
         </button>
       </div>
 
-      <div
+      <div 
   ref={graphRef}
   className="w-full"
   style={{
-    width: "100%",
+    width: "95%",
     height: "auto",
     margin: "0 auto",
     display: "block",
@@ -153,26 +153,26 @@ const GartnerHypeCycle = () => {
     <line x1="50" y1="550" x2="50" y2="50" stroke="black" strokeWidth="2" />
 
     {/* X-axis label */}
-    <text x="400" y="590" textAnchor="middle" fontSize="16">Time</text>
+    <text x="400" y="595" textAnchor="middle" fontSize="16" fontWeight="bold">Time</text>
 
     {/* Y-axis label */}
-    <text x="20" y="300" textAnchor="middle" fontSize="16" transform="rotate(-90 20 300)">Expectations</text>
+    <text x="20" y="300" textAnchor="middle" fontSize="16" fontWeight="bold" transform="rotate(-90 20 300)">Expectations</text>
 
     {/* Refined Hype Cycle Curve with Flatter Plateau */}
     <path d="M50 525 Q50 100 200 50 C400 50 250 450 500 400 S700 300 750 305 T750 305" fill="none" stroke="red" strokeWidth="3" />
 
     {/* Stage Labels on X-axis */}
-    <text x="50" y="570" textAnchor="middle" fontSize="12">Technology</text>
-    <text x="50" y="585" textAnchor="middle" fontSize="12">trigger</text>
-    <text x="200" y="570" textAnchor="middle" fontSize="12">Peak of</text>
-    <text x="200" y="585" textAnchor="middle" fontSize="12">inflated expectations</text>
-    <text x="400" y="570" textAnchor="middle" fontSize="12">Trough of disillusionment</text>
-    <text x="565" y="570" textAnchor="middle" fontSize="12">Slope of enlightenment</text>
-    <text x="750" y="570" textAnchor="middle" fontSize="12">Plateau of</text>
-    <text x="750" y="585" textAnchor="middle" fontSize="12">productivity</text>
+    <text x="50" y="570" textAnchor="middle" fontSize="14">Technology</text>
+    <text x="50" y="585" textAnchor="middle" fontSize="14">trigger</text>
+    <text x="200" y="570" textAnchor="middle" fontSize="14">Peak of</text>
+    <text x="200" y="585" textAnchor="middle" fontSize="14">inflated expectations</text>
+    <text x="400" y="570" textAnchor="middle" fontSize="14">Trough of disillusionment</text>
+    <text x="575" y="570" textAnchor="middle" fontSize="14">Slope of enlightenment</text>
+    <text x="750" y="570" textAnchor="middle" fontSize="14">Plateau of</text>
+    <text x="750" y="585" textAnchor="middle" fontSize="14">productivity</text>
 
     {/* Title */}
-    <text x="400" y="30" textAnchor="middle" fontSize="24" fontWeight="bold">Gartner Hype Cycle</text>
+    <text x="400" y="30" textAnchor="middle" fontSize="24" >Gartner Hype Cycle</text>
   </svg>
 </div>
 
