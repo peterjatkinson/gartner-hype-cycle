@@ -75,33 +75,7 @@ const GartnerHypeCycle = () => {
     });
   };
 
-  const getScalingStyles = () => {
-    if (windowWidth < 400) {
-      return {
-        transform: "scale(0.85)", // Make it a bit larger for small screens
-        fontSize: "0.9rem",
-        height: "2rem",
-      };
-    } else if (windowWidth < 768) {
-      return {
-        transform: "scale(0.9)",
-        fontSize: "0.95rem",
-        height: "2.2rem",
-      };
-    } else if (windowWidth < 1024) {
-      return {
-        transform: "scale(0.95)",
-        fontSize: "1rem",
-        height: "2.5rem",
-      };
-    } else {
-      return {
-        transform: "scale(1)",
-        fontSize: "1rem",
-        height: "2.5rem",
-      };
-    }
-  };
+
 
   return (
     <div
@@ -117,11 +91,10 @@ const GartnerHypeCycle = () => {
         className="relative w-full border border-dashed border-gray-300 bg-gray-50 flex flex-wrap justify-start items-start"
         style={{
           paddingTop: "2rem",
+          gap: "8px", // Reintroduce spacing between draggable items
           height: windowWidth < 400 ? "35vh" : windowWidth < 768 ? "30vh" : windowWidth < 1024 ? "25vh" : "20vh",
-          maxHeight: windowWidth < 400 ? "30vh" : windowWidth < 768 ? "25vh" : "20vh",
-          minHeight: "150px",
-          padding: "0",
-          margin: 0,
+          maxHeight: windowWidth < 400 ? "0.2vh" : windowWidth < 768 ? "0.2vh" : ".2vh",
+          minHeight: "100px",
         }}
       >
         <p className="absolute top-1 left-2 text-xs text-gray-500">
@@ -137,9 +110,13 @@ const GartnerHypeCycle = () => {
               className={`relative cursor-move p-1 rounded shadow text-sm 
                             ${label.isOnImage ? 'bg-white bg-opacity-75' : 'bg-white'}`}
               style={{
-                ...getScalingStyles(),
                 lineHeight: "1.2",
-                maxWidth: "45%",
+                display: "inline-block",
+                maxWidth: "fit-content", 
+                whiteSpace: "nowrap", 
+                marginBottom: '16px', // Controls vertical space between rows of items
+                flexBasis: '100px', // Optional: controls how much space each item takes before wrapping
+                margin: '5px 0', // Add vertical space between the items
               }}
             >
               {label.text}
@@ -165,39 +142,61 @@ const GartnerHypeCycle = () => {
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          width: "100%", 
-          paddingTop: "60%", 
-          height: 0, 
+          width: "100%",
+          paddingTop: "56.25%",
+          height: 0,
           maxWidth: "100%",
-          margin: "0",  
+          margin: "0",
           display: "block",
         }}
       />
-      
+
       {/* Mobile-specific styles */}
       <style jsx>{`
         @media (max-width: 768px) {
           div.relative {
             margin: 0;
             padding: 0;
-            width: 100vw; /* Use the full viewport width */
-            max-width: 100vw; /* No extra space on the sides */
+            width: 100vw; /* Full width on mobile */
+            max-width: 100vw;
           }
 
           div.relative.w-full {
             padding: 0;
             margin: 0;
-            border: none; /* Remove border if desired for mobile */
+            border: none;
           }
 
           .w-full.flex {
-            margin: 0; /* Ensure the button container takes full width */
+            margin: 0;
+          }
+
+          .cursor-move {
+            font-size: 0.8rem; /* Make text smaller in mobile */
+            padding: 4px; /* Reduce padding for mobile */
+          }
+        }
+
+            @media (min-width: 769px) {
+                      div.relative {
+
+          font-size: 1rem;
+      }
+        }
+
+        @media (max-width: 400px) {
+          .cursor-move {
+            font-size: 0.7rem; /* Even smaller text for very small screens */
+            padding: 2px; /* Smaller padding */
           }
         }
       `}</style>
     </div>
   );
 };
+
+
+
 
 
   
