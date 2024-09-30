@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/gartner-hype-cycle/static/css/main.80553624.css",
-    "main.js": "/gartner-hype-cycle/static/js/main.48abd06a.js",
+    "main.css": "/gartner-hype-cycle/static/css/main.1b04db83.css",
+    "main.js": "/gartner-hype-cycle/static/js/main.b2e0eba6.js",
     "index.html": "/gartner-hype-cycle/index.html",
-    "main.80553624.css.map": "/gartner-hype-cycle/static/css/main.80553624.css.map",
-    "main.48abd06a.js.map": "/gartner-hype-cycle/static/js/main.48abd06a.js.map"
+    "main.1b04db83.css.map": "/gartner-hype-cycle/static/css/main.1b04db83.css.map",
+    "main.b2e0eba6.js.map": "/gartner-hype-cycle/static/js/main.b2e0eba6.js.map"
   },
   "entrypoints": [
-    "static/css/main.80553624.css",
-    "static/js/main.48abd06a.js"
+    "static/css/main.1b04db83.css",
+    "static/js/main.b2e0eba6.js"
   ]
 }
