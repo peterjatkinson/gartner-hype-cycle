@@ -145,21 +145,23 @@ const GartnerHypeCycle = () => {
         </div>
   
         <div 
-          ref={graphRef}
-          className="w-full bg-cover bg-center"
-          style={{
-            backgroundImage: `url('${process.env.PUBLIC_URL}/images/gartner-hype-cycle.png')`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            width: '100%', // Ensure full width
-            paddingTop: '56.25%', // Aspect ratio to maintain the height dynamically (16:9 ratio)
-            height: 'auto', // Allow the height to adjust automatically
-            maxWidth: '100%',
-            margin: '0 auto', // Centering the graph
-            display: 'block', // Ensures the container behaves as a block element
-          }}
-        />
+  ref={graphRef}
+  className="w-full bg-cover bg-center"
+  style={{
+    backgroundImage: `url('${process.env.PUBLIC_URL}/images/gartner-hype-cycle.png')`,
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    width: '100%', // Ensure full width
+    paddingTop: '56.25%', // Aspect ratio to maintain the height dynamically (16:9 ratio)
+    height: 0, // Ensures no extra height is added beyond the aspect ratio
+    overflow: 'hidden', // Prevents any extra content from spilling over
+    maxWidth: '100%',
+    margin: '0 auto', // Centering the graph
+    display: 'block', // Ensures the container behaves as a block element
+  }}
+/>
+
       </div>
     );
   };
